@@ -1,41 +1,39 @@
 {
-  "name": "@rc-component/async-validator",
+  "name": "rc-async-validator-modern",
   "version": "5.0.1",
-  "description": "Validate form asynchronous",
+  "description": "Validate form asynchronous (for Chrome 86+)",
   "keywords": [
     "async-validator",
     "form"
   ],
-  "homepage": "http://github.com/react-component/async-validator",
+  "homepage": "http://github.com/guoyunhe/rc-async-validator-modern",
   "bugs": {
-    "url": "http://github.com/react-component/async-validator/issues"
+    "url": "http://github.com/guoyunhe/rc-async-validator-modern/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:react-component/async-validator.git"
+    "url": "git@github.com:guoyunhe/rc-async-validator-modern.git"
   },
+  "funding": "https://github.com/sponsors/guoyunhe",
   "license": "MIT",
-  "main": "./lib/index",
-  "module": "./es/index",
-  "types": "./lib/index.d.ts",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "es",
-    "lib"
+    "dist",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md"
   ],
   "scripts": {
-    "compile": "father build",
-    "docs:build": "dumi build",
-    "docs:deploy": "gh-pages -d .docs-dist",
-    "gh-pages": "npm run docs:build && npm run docs:deploy",
-    "lint": "eslint src --ext .tsx,.ts,.jsx,.js",
-    "now-build": "npm run docs:build",
-    "prepublishOnly": "npm run compile && np --yolo --no-publish",
-    "prettier": "prettier . --write",
-    "postpublish": "npm run gh-pages",
-    "start": "dumi dev",
-    "test": "rc-test",
-    "coverage": "rc-test --coverage",
-    "tsc": "tsc --noEmit"
+    "build": "rive build",
+    "build:watch": "rive build --watch",
+    "lint": "rive lint",
+    "lint:fix": "rive lint --fix",
+    "start": "rive start",
+    "test": "rive test",
+    "test:ui": "rive test --ui",
+    "test:watch": "rive test --watch"
   },
   "pre-commit": [
     "lint-staged"
@@ -45,31 +43,49 @@
       "prettier --write"
     ]
   },
+  "prettier": "prettier-config-rive",
+  "eslintConfig": {
+    "extends": "eslint-config-rive/react"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-rive"
+  },
   "dependencies": {
-    "@babel/runtime": "^7.24.4"
+    "classnames": "^2.5.1"
   },
   "devDependencies": {
+    "@mdx-js/react": "^3.0.1",
     "@rc-component/father-plugin": "^1.0.2",
-    "@types/jest": "^29.5.12",
-    "@types/react": "18.x",
-    "@types/react-dom": "18.x",
+    "@testing-library/react": "^15.0.5",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
     "@umijs/fabric": "^4.0.1",
-    "dumi": "^2.2.17",
-    "eslint": "^8.0.0",
     "father": "^4.4.0",
     "gh-pages": "^6.1.1",
     "lint-staged": "^15.2.2",
-    "np": "^10.0.3",
-    "prettier": "^3.2.5",
     "rc-test": "^7.0.15",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typescript": "5.x"
+    "react": "^18.3.1",
+    "react-doc-ui": "^2.2.6",
+    "react-dom": "^18.3.1",
+    "rive": "^2.0.33",
+    "typescript": "^5.4.5",
+    "whatwg-fetch": "^3.6.20"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^17.0.0 || ^16.8.0"
   },
   "engines": {
     "node": ">=14.x"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "rive": {
+    "template": "react",
+    "doc": {
+      "disabled": true
+    }
   }
 }

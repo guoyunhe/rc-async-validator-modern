@@ -1,16 +1,41 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es2015",
     "moduleResolution": "node",
-    "baseUrl": "./",
-    "jsx": "react",
-    "declaration": true,
+    "jsx": "react-jsx",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "paths": {
-      "@/*": ["src/*"],
-      "@@/*": ["src/.umi/*"],
-      "@rc-component/async-validator": ["src/index.ts"]
-    }
-  }
+      "@/*": [
+        "./src/*"
+      ],
+      "@@/*": [
+        "./src/.umi/*"
+      ],
+      "@rc-component/async-validator": [
+        "./src/index.ts"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable"
+    ],
+    "allowJs": true,
+    "checkJs": false,
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "types": [
+      "node",
+      "rive/globals"
+    ]
+  },
+  "exclude": [
+    ".rive",
+    "build",
+    "coverage",
+    "dist",
+    "node_modules"
+  ]
 }
